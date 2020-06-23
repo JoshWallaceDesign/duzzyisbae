@@ -186,9 +186,10 @@ async def queue(ctx):
         amount = len(que[id])
         print(amount)
         queholder = que[id]
-        embed = discord.Embed(title=('Participants | ' + str(amount) +
-                                     '\n' + ("\n".join(que[id]))), color=0x7289da)
+        embed = discord.Embed(
+            title=('Participants | ' + str(amount)), color=0x7289da)
         await ctx.send(embed=embed)
+        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
         if len([que]) == 0:
             print('Queue Empty')
         else:
@@ -196,7 +197,6 @@ async def queue(ctx):
             embed = discord.Embed(
                 title=('Now | ' + performingnow), color=0xaaf542)
             await ctx.send(embed=embed)
-
 
 """__________________Add & Kick for Host Only__________________"""
 
@@ -284,8 +284,9 @@ async def next(ctx):
         embed = discord.Embed(
             title=('Up Next | ' + performingnow), color=0xaaf542)
         await ctx.send(embed=embed)
-        embed = discord.Embed(title=('Participants | ' + str(amount) +
-                                     '\n' + ("\n".join(que[id]))), color=0x7289da)
+        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
+        embed = discord.Embed(
+            title=('Participants | ' + str(amount)), color=0x7289da)
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
@@ -308,13 +309,15 @@ async def skip(ctx):
         embed = discord.Embed(
             title=('Up Next | ' + performingnow), color=0xaaf542)
         await ctx.send(embed=embed)
-        embed = discord.Embed(title=('Participants | ' + str(amount) +
-                                     '\n' + ("\n".join(que[id]))), color=0x7289da)
+        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
+        embed = discord.Embed(
+            title=('Participants | ' + str(amount)), color=0x7289da)
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
             title=('This command is only for the Host!'), color=0xf55742)
         await ctx.send(embed=embed)
+
 
 
 @ client.command()
