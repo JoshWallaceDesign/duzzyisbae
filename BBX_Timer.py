@@ -182,21 +182,13 @@ async def queue(ctx):
             title=('Queue is Empty!' + '\n' + '!join to Part'), color=0xf55742)
         await ctx.send(embed=embed)
     else:
-
         amount = len(que[id])
         print(amount)
         queholder = que[id]
+        performingnow = queholder[0]
         embed = discord.Embed(
-            title=('Participants | ' + str(amount)), color=0x7289da)
+            title=('Now | ' + performingnow), description=(f'**__{str(amount)} Total Participants__**' + '\n' + ("\n".join(que[id]))), color=0x7289da)
         await ctx.send(embed=embed)
-        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
-        if len([que]) == 0:
-            print('Queue Empty')
-        else:
-            performingnow = queholder[0]
-            embed = discord.Embed(
-                title=('Now | ' + performingnow), color=0xaaf542)
-            await ctx.send(embed=embed)
 
 """__________________Add & Kick for Host Only__________________"""
 
@@ -282,11 +274,7 @@ async def next(ctx):
         performingnow = queholder[0]
         amount = len(que[id])
         embed = discord.Embed(
-            title=('Up Next | ' + performingnow), color=0xaaf542)
-        await ctx.send(embed=embed)
-        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
-        embed = discord.Embed(
-            title=('Participants | ' + str(amount)), color=0x7289da)
+            title=('Next Up | ' + performingnow), description=(f'**__{str(amount)} Total Participants__**' + '\n' + ("\n".join(que[id]))), color=0x7289da)
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
@@ -303,21 +291,15 @@ async def skip(ctx):
             title=(x + ' has been skiped!'), color=0xf55742)
         await ctx.send(embed=embed)
         que[id].append(que[id].pop(que[id].index(x)))
-
         performingnow = queholder[0]
         amount = len(que[id])
         embed = discord.Embed(
-            title=('Up Next | ' + performingnow), color=0xaaf542)
-        await ctx.send(embed=embed)
-        await ctx.send('LIST:' + '\n' + ("\n".join(que[id])))
-        embed = discord.Embed(
-            title=('Participants | ' + str(amount)), color=0x7289da)
+            title=('Next Up | ' + performingnow), description=(f'**__{str(amount)} Total Participants__**' + '\n' + ("\n".join(que[id]))), color=0x7289da)
         await ctx.send(embed=embed)
     else:
         embed = discord.Embed(
             title=('This command is only for the Host!'), color=0xf55742)
         await ctx.send(embed=embed)
-
 
 
 @ client.command()
